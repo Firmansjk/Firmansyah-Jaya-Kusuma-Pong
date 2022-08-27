@@ -21,6 +21,6 @@ public class BallController : MonoBehaviour
 
     public void ResetBall()
     {
-        transform.position = new Vector3(resetPosition.x, resetPosition.y, 2);
+        transform.position = new Vector3(resetPosition.x, resetPosition.y, 1);
     }
 }
