@@ -38,10 +38,10 @@ public class PowerUpManager : MonoBehaviour
 
     public void GenerateRandomPowerUp(Vector2 position)
     {
-        if (powerUpList.Count >= maxPowerUpAmount)
-        {
-            return;
-        }
+        //if (powerUpList.Count >= maxPowerUpAmount)
+        //{
+        //    return;
+        //}
 
         if (position.x < powerUpAreaMin.x ||
             position.x > powerUpAreaMax.x ||
@@ -55,8 +55,19 @@ public class PowerUpManager : MonoBehaviour
 
         GameObject powerUp = Instantiate(powerUpTemplateList[randomIndex], new Vector3(position.x, position.y, powerUpTemplateList[randomIndex].transform.transform.position.z), Quaternion.identity, spawnArea);
         powerUp.SetActive(true);
-
         powerUpList.Add(powerUp);
+
+        //Jika 'jumlah powerUpList' lebih besar dari 'maxPowerUpAmount', penghapusan power up dimulai
+        if (powerUpList.Count >= maxPowerUpAmount)
+        {
+            //Destroy(powerUp, spawnInterval);
+
+            RemoveAllPowerUp();     //Method Penghapus
+        }
+
+        Debug.Log(powerUpList);
+        Debug.Log(spawnArea);
+        Debug.Log(powerUp);
     }
 
     public void RemovePowerUp(GameObject powerUp)
@@ -67,8 +78,8 @@ public class PowerUpManager : MonoBehaviour
 
     public void RemoveAllPowerUp()
     {
-        while (powerUpList.Count > 0)
-        {
+        while (powerUpList.Count > maxPowerUpAmount)   //Jika 'jumlah powerUpList' diatas 2, 
+        {                                              //maka menghapus powerUp pada index 0    
             RemovePowerUp(powerUpList[0]);
         }
     }
