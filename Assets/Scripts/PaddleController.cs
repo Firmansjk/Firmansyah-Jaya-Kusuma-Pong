@@ -4,23 +4,46 @@ using UnityEngine;
 
 public class PaddleController : MonoBehaviour
 {
-    public int speed;
+    public float speed;
     public KeyCode upKey;
     public KeyCode downKey;
+
     private Rigidbody2D rig;
-    // Start is called before the first frame update
+    private Vector3 originalSize;
+    private float originalSpeed;
+
     void Start()
     {
         rig = GetComponent<Rigidbody2D>();
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
-        // get input 
-
-        // move object 
         MoveObject(GetInput());
+    }
+
+    public void ActivatePUEnlarge(float paddleSize)
+    {
+        originalSize = transform.localScale;
+        transform.localScale = Vector3.Scale(transform.localScale, new Vector3(1, paddleSize, 1));  //mengalikan 2 Vector3
+        Invoke("DeactivatePUEnlarge", 5);   //manggil method dalam beberapa waktu kedepan
+    }
+
+    public void DeactivatePUEnlarge()
+    {
+        transform.localScale = originalSize;
+    }
+
+    public void ActivatePUQuickness(float paddleSpeed)
+    {
+        originalSpeed = 5;
+        speed *= paddleSpeed;
+        Invoke("DeactivatePUQuickness", 5);
+    }
+
+    public void DeactivatePUQuickness()
+    {
+        speed = originalSpeed;
     }
 
     private Vector2 GetInput()

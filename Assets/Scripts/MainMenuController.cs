@@ -15,4 +15,9 @@ public class MainMenuController : MonoBehaviour
     {
         Debug.Log("Created by Firman");
     }
+
+    public void GoToMainMenu()
+    {
+        SceneManager.LoadScene("Main Menu");
+    }
 }

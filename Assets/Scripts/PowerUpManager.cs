@@ -11,17 +11,16 @@ public class PowerUpManager : MonoBehaviour
     public Vector2 powerUpAreaMax;
     public List<GameObject> powerUpTemplateList;
 
-
     private List<GameObject> powerUpList;
     private float timer;
 
-    private void Start()
+    public void Start()
     {
         powerUpList = new List<GameObject>();
         timer = 0;
     }
 
-    private void Update()
+    public void Update()
     {
         timer += Time.deltaTime;
 
