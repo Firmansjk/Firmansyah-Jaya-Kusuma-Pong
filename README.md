@@ -1,3 +1,4 @@
 # Firmansyah-Jaya-Kusuma-Pong
 
-Project 2
+Game Ping-Pong Sederhana
+Silahkan Download folder 'build' pada branch 'build'
